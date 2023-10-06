@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class CarController : MonoBehaviour
 {
-    private const string semaphoreTag = "Semaphore";
-    private const string carTag = "Car";
     private Rigidbody _rigidbody;
     private RaycastHit closestValidHit;
     private bool countingDown = false;
@@ -59,7 +57,7 @@ public class CarController : MonoBehaviour
         }
 
         if(closestValidHit.collider != null) {
-            if(closestValidHit.transform.tag == semaphoreTag) {
+            if(closestValidHit.transform.tag == Constants.semaphoreTag) {
                 Debug.Log($"{this.gameObject} hit semaphore {closestValidHit.transform.gameObject}");
                 if(moveDirection.InvertDirection(
                         closestValidHit.transform.GetComponent<DirectionalCollider>().direction
@@ -70,7 +68,7 @@ public class CarController : MonoBehaviour
                 }
             }
 
-            if(closestValidHit.transform.tag == carTag) {
+            if(closestValidHit.transform.tag == Constants.carTag) {
                 Debug.Log($"{this.gameObject} hit cat");
                 _rigidbody.velocity = Vector3.zero;
                 move = false;
