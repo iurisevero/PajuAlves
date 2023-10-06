@@ -5,11 +5,10 @@ using UnityEngine.UI;
 
 public class CarController : MonoBehaviour
 {
-    private const float maxCountDown = 100.0f;
     private Rigidbody _rigidbody;
     private RaycastHit closestValidHit;
     private bool countingDown = false;
-    private float currentCountDown = maxCountDown;
+    private float currentCountDown = Constants.maxCountDown;
     public MoveDirection moveDirection;
     public bool move = false;
     public float speed = 2.5f;
@@ -102,7 +101,7 @@ public class CarController : MonoBehaviour
 
             if(countingDown) {
                 countingDown = false;
-                currentCountDown = maxCountDown;
+                currentCountDown = Constants.maxCountDown;
                 warnHalfTime = false;
                 warnOneQuarter = false;
                 countDownImage.enabled = false;
