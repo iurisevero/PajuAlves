@@ -7,11 +7,18 @@ public class GameController : Singleton<GameController>
     public GameObject blueCarPrefab;
     public GameObject orangeCarPrefab;
     public GameObject redCarPrefab;
+    public bool gameOver { private set; get; }
 
     void Start()
     {
+        gameOver = false;
         GameObjectPoolController.AddEntry(Constants.GetCarPoolKey(CarPoolKey.BlueCar), blueCarPrefab, 5, 10);
         GameObjectPoolController.AddEntry(Constants.GetCarPoolKey(CarPoolKey.OrangeCar), orangeCarPrefab, 5, 10);
         GameObjectPoolController.AddEntry(Constants.GetCarPoolKey(CarPoolKey.RedCar), redCarPrefab, 5, 10);
+    }
+
+    public void GameOver() {
+        gameOver = true;
+        Time.timeScale = 0;
     }
 }

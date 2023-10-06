@@ -1,42 +1,55 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CarController : MonoBehaviour
 {
+    private const float maxCountDown = 100.0f;
     private Rigidbody _rigidbody;
     private RaycastHit closestValidHit;
     private bool countingDown = false;
-    private float currentCountDown = float.MaxValue;
+    private float currentCountDown = maxCountDown;
     public MoveDirection moveDirection;
     public bool move = false;
     public float speed = 2.5f;
     public float raycastDistance = 1.0f;
     public int maxTimeStopped = 10;
     public bool warnHalfTime = false;
-    public bool gameOver = false;
+    public bool warnOneQuarter = false;
+    public Image countDownImage;
 
     // Start is called before the first frame update
     void Start()
     {
         _rigidbody = gameObject.GetComponent<Rigidbody>();
         closestValidHit = new RaycastHit();
+        countDownImage.enabled = false;
     }
 
     void Update() {
+        if(GameController.Instance.gameOver) return;
+
         if(countingDown) {
             currentCountDown -= Time.deltaTime;
+            countDownImage.fillAmount = (100.0f - (currentCountDown * 100.0f / maxTimeStopped))/100.0f;
             Debug.Log($"Counting down");
         }
 
         if((int) currentCountDown == maxTimeStopped/2 && !warnHalfTime) {
             warnHalfTime = true;
+            countDownImage.color = Color.yellow;
             Debug.Log("HalfTime");
         }
 
-        if((int) currentCountDown == 0 && !gameOver) {
-            Time.timeScale = 0;
-            gameOver = true;
+        if((int) currentCountDown == maxTimeStopped/4 && !warnOneQuarter) {
+            warnOneQuarter = true;
+            countDownImage.color = Color.red;
+            Debug.Log("OneQuarter");
+        }
+
+        if((int) currentCountDown < 0 && !GameController.Instance.gameOver) {
+            GameController.Instance.GameOver();
             Debug.Log("Game Over");
         }
     }
@@ -44,6 +57,7 @@ public class CarController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if(GameController.Instance.gameOver) return;
         
         RaycastHit[] hits = Physics.RaycastAll(transform.position, transform.right, raycastDistance);
         closestValidHit = new RaycastHit();
@@ -76,6 +90,9 @@ public class CarController : MonoBehaviour
 
             if(!countingDown && !move) {
                 countingDown = true;
+                countDownImage.fillAmount = 0;
+                countDownImage.color = Color.green;
+                countDownImage.enabled = true;
                 currentCountDown = maxTimeStopped;
                 Debug.Log("Starting count down");
             }
@@ -84,9 +101,10 @@ public class CarController : MonoBehaviour
 
             if(countingDown) {
                 countingDown = false;
-                currentCountDown = float.MaxValue;
+                currentCountDown = maxCountDown;
                 warnHalfTime = false;
-                gameOver = false;
+                warnOneQuarter = false;
+                countDownImage.enabled = false;
                 Debug.Log("Stopping count down");
             }
         }
