@@ -60,9 +60,14 @@ public class CarController : MonoBehaviour
 
         if(closestValidHit.collider != null) {
             if(closestValidHit.transform.tag == semaphoreTag) {
-                Debug.Log($"{this.gameObject} hit semaphore");
-                _rigidbody.velocity = Vector3.zero;
-                move = false;
+                Debug.Log($"{this.gameObject} hit semaphore {closestValidHit.transform.gameObject}");
+                if(moveDirection.InvertDirection(
+                        closestValidHit.transform.GetComponent<DirectionalCollider>().direction
+                    )
+                ) {
+                    _rigidbody.velocity = Vector3.zero;
+                    move = false;
+                }
             }
 
             if(closestValidHit.transform.tag == carTag) {
@@ -71,7 +76,7 @@ public class CarController : MonoBehaviour
                 move = false;
             }
 
-            if(!countingDown) {
+            if(!countingDown && !move) {
                 countingDown = true;
                 currentCountDown = maxTimeStopped;
                 Debug.Log("Starting count down");
