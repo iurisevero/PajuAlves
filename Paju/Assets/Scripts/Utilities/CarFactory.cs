@@ -1,26 +1,23 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CarFactory : MonoBehaviour
 {
-    private const string CarObjectPoolKey = "Car";
     public GameObject carPrefab;
     public MoveDirection toMoveDirection;
+    public CarPoolKey[] toSpawnCarsKey;
+    public float[] toSpawnCarsTime;
 
     void Start()
     {
-        GameObjectPoolController.AddEntry(CarObjectPoolKey, carPrefab, 5, 10);
+        StartCoroutine(SpawnCars());
     }
 
-    GameObject Dequeue(){
-        Poolable poolObj = GameObjectPoolController.Dequeue(CarObjectPoolKey);
+    GameObject Dequeue(string key){
+        Poolable poolObj = GameObjectPoolController.Dequeue(key);
         return poolObj.gameObject;
-    }
-
-    void Enqueue(GameObject portraitObject){
-        Poolable p = portraitObject.GetComponent<Poolable>();
-        GameObjectPoolController.Enqueue(p);
     }
 
     void ConfigureCar(GameObject carObj) {
@@ -32,8 +29,11 @@ public class CarFactory : MonoBehaviour
         carObj.gameObject.SetActive(true);
     }
 
-    public void CreateCar() {
-        GameObject car = Dequeue();
-        ConfigureCar(car);
+    IEnumerator SpawnCars() {
+        for(int i=0; i < toSpawnCarsKey.Length; ++i) {
+            yield return new WaitForSeconds(toSpawnCarsTime[i]);
+            GameObject car = Dequeue(Constants.GetCarPoolKey(toSpawnCarsKey[i]));
+            ConfigureCar(car);
+        }
     }
 }

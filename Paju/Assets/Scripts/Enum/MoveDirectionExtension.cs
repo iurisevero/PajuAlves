@@ -1,7 +1,3 @@
-using UnityEngine;
-using System.Collections;
-using Unity.VisualScripting;
-
 public static class MoveDirectionExtensions
 {
     public static float ToFloat(this MoveDirection moveDirection){

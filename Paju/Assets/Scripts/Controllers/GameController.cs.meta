@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 952e12545a1140f49958aaeb62b86fdb
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - blueCarPrefab: {fileID: 869715267229460092, guid: 18149e89541d72b4cb90636133f9c71d,
+      type: 3}
+  - orangeCarPrefab: {instanceID: 0}
+  - redCarPrefab: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

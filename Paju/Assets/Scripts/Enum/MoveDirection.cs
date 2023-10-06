@@ -1,7 +1,4 @@
-﻿using UnityEngine;
-using System.Collections;
-
-public enum MoveDirection
+﻿public enum MoveDirection
 {
 	North,
 	East,
