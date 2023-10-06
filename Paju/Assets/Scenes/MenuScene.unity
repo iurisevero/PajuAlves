@@ -671,13 +671,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levels:
   - index: 1
-    winPoints: 9
+    winPoints: 12
     completed: 0
   - index: 1
-    winPoints: 9
+    winPoints: 12
     completed: 0
   - index: 1
-    winPoints: 9
+    winPoints: 12
     completed: 0
   blueCarPrefab: {fileID: 869715267229460092, guid: 18149e89541d72b4cb90636133f9c71d,
     type: 3}

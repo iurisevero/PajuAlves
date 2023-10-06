@@ -55,5 +55,7 @@ public class GameController : Singleton<GameController>
 
     public void ReturnToMenu() {
         SceneManager.LoadScene(0);
+        gameOver = false;
+        win = false;
     }
 }
