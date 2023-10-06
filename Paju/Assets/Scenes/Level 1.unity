@@ -2190,6 +2190,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Semaphore
       objectReference: {fileID: 0}
+    - target: {fileID: 2178655301171839031, guid: 8997300f4eec4c342b14af93b53f41a9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2178655301171839033, guid: 8997300f4eec4c342b14af93b53f41a9,
         type: 3}
       propertyPath: m_RootOrder

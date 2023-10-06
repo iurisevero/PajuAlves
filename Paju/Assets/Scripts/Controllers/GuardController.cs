@@ -9,6 +9,7 @@ public class GuardController : MonoBehaviour
     public MeshRenderer northSemaphoreRenderer, southSemaphoreRenderer;
     public MeshRenderer westSemaphoreRenderer, eastSemaphoreRenderer;
     public Material openSemaphoreMaterial, closeSemaphoreMaterial;
+    public GameObject guardPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +34,7 @@ public class GuardController : MonoBehaviour
 
         northSemaphoreCollider.enabled = !true;
         northSemaphoreRenderer.material = openSemaphoreMaterial;
+        guardPrefab.transform.rotation = Quaternion.Euler(0, MoveDirection.North.ToFloat(), 0);
     }
 
     public void SetEastSemaphore() {
@@ -46,6 +48,7 @@ public class GuardController : MonoBehaviour
 
         eastSemaphoreCollider.enabled = !true;
         eastSemaphoreRenderer.material = openSemaphoreMaterial;
+        guardPrefab.transform.rotation = Quaternion.Euler(0, MoveDirection.East.ToFloat(), 0);
     }
 
     public void SetSouthSemaphore() {
@@ -59,6 +62,7 @@ public class GuardController : MonoBehaviour
 
         southSemaphoreCollider.enabled = !true;
         southSemaphoreRenderer.material = openSemaphoreMaterial;
+        guardPrefab.transform.rotation = Quaternion.Euler(0, MoveDirection.South.ToFloat(), 0);
     }
 
     public void SetWestSemaphore() {
@@ -72,5 +76,6 @@ public class GuardController : MonoBehaviour
 
         westSemaphoreCollider.enabled = !true;
         westSemaphoreRenderer.material = openSemaphoreMaterial;
+        guardPrefab.transform.rotation = Quaternion.Euler(0, MoveDirection.West.ToFloat(), 0);
     }
 }

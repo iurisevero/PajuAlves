@@ -50,6 +50,7 @@ public class GameController : Singleton<GameController>
 
     public void GoToLevel(int index, int toWinPoints) {
         winPoints = toWinPoints;
+        totalPoints = 0;
         SceneManager.LoadScene(index);
     }
 
