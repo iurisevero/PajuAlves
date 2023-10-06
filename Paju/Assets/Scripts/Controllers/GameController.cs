@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : Singleton<GameController>
 {
+    private int winPoints;
+    public Level[] levels;
     public GameObject blueCarPrefab;
     public GameObject orangeCarPrefab;
     public GameObject redCarPrefab;
     public UIController uiController;
     public bool gameOver { private set; get; }
     public int totalPoints {private set; get; }
-    public int winPoints;
 
     void Start()
     {
@@ -34,5 +36,10 @@ public class GameController : Singleton<GameController>
         if(totalPoints == winPoints) {
             uiController.ShowWin();
         }
+    }
+
+    public void GoToLevel(int index, int toWinPoints) {
+        winPoints = toWinPoints;
+        SceneManager.LoadScene(index);
     }
 }
