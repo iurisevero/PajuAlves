@@ -34,7 +34,7 @@ public class CarController : MonoBehaviour
         if(countingDown) {
             currentCountDown -= Time.deltaTime;
             countDownImage.fillAmount = (100.0f - (currentCountDown * 100.0f / maxTimeStopped))/100.0f;
-            Debug.Log($"Counting down");
+            // Debug.Log($"Counting down");
         }
 
         if((int) currentCountDown == maxTimeStopped/2 && !warnHalfTime) {
@@ -67,13 +67,13 @@ public class CarController : MonoBehaviour
                 (closestValidHit.collider == null || closestValidHit.distance > hit.distance)
             ) {
                 closestValidHit = hit;
-                Debug.Log($"{this.gameObject} raycast hit with {closestValidHit.collider.gameObject}");
+                // Debug.Log($"{this.gameObject} raycast hit with {closestValidHit.collider.gameObject}");
             }
         }
 
         if(closestValidHit.collider != null) {
             if(closestValidHit.transform.tag == Constants.semaphoreTag) {
-                Debug.Log($"{this.gameObject} hit semaphore {closestValidHit.transform.gameObject}");
+                // Debug.Log($"{this.gameObject} hit semaphore {closestValidHit.transform.gameObject}");
                 if(moveDirection.InvertDirection(
                         closestValidHit.transform.GetComponent<DirectionalCollider>().direction
                     )
@@ -84,7 +84,7 @@ public class CarController : MonoBehaviour
             }
 
             if(closestValidHit.transform.tag == Constants.carTag) {
-                Debug.Log($"{this.gameObject} hit cat");
+                // Debug.Log($"{this.gameObject} hit cat");
                 _rigidbody.velocity = Vector3.zero;
                 move = false;
             }

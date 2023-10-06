@@ -10,7 +10,6 @@ public class MainMenuUIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log($"LevelButtons Lenght: {levelButtons.Length}; Levels Lenght: {GameController.Instance.levels.Length}");
         for(int i=0; i < levelButtons.Length; ++i) {
             int levelIndex = GameController.Instance.levels[i].index;
             int levelWinPoints = GameController.Instance.levels[i].winPoints;
@@ -21,5 +20,13 @@ public class MainMenuUIController : MonoBehaviour
             });
             levelButtons[i].interactable = !GameController.Instance.levels[i].completed;
         }
+    }
+
+    public void Quit() {
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
     }
 }

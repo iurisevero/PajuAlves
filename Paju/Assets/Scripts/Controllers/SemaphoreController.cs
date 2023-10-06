@@ -10,12 +10,11 @@ public class SemaphoreController : MonoBehaviour
     public MeshRenderer westSemaphoreRenderer, eastSemaphoreRenderer;
     public Material openSemaphoreMaterial, closeSemaphoreMaterial;
     public bool horizontalSemaphoreOn = true;
-    public bool testBoolean = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        SetHorizontalSemaphores(true);
+        SetHorizontalSemaphores();
     }
 
     // Update is called once per frame
@@ -26,36 +25,36 @@ public class SemaphoreController : MonoBehaviour
 
     public void SwitchSemaphore() {
         if(horizontalSemaphoreOn) {
-            SetVerticalSemaphores(true);
+            SetVerticalSemaphores();
         } else {
-            SetHorizontalSemaphores(true);
+            SetHorizontalSemaphores();
         }
     }
 
-    public void SetHorizontalSemaphores(bool isEnable) {
-        Debug.Log($"SetHorizontal: {isEnable}");
-        westSemaphoreCollider.enabled = isEnable;
-        eastSemaphoreCollider.enabled = isEnable;
+    public void SetHorizontalSemaphores() {
+        Debug.Log("SetHorizontal");
+        westSemaphoreCollider.enabled = true;
+        eastSemaphoreCollider.enabled = true;
         westSemaphoreRenderer.material = closeSemaphoreMaterial;
         eastSemaphoreRenderer.material = closeSemaphoreMaterial;
 
-        northSemaphoreCollider.enabled = !isEnable;
-        southSemaphoreCollider.enabled = !isEnable;
+        northSemaphoreCollider.enabled = !true;
+        southSemaphoreCollider.enabled = !true;
         northSemaphoreRenderer.material = openSemaphoreMaterial;
         southSemaphoreRenderer.material = openSemaphoreMaterial;
 
         horizontalSemaphoreOn = true;
     }
 
-    public void SetVerticalSemaphores(bool isEnable) {
-        Debug.Log($"SetVertical: {isEnable}");
-        northSemaphoreCollider.enabled = isEnable;
-        southSemaphoreCollider.enabled = isEnable;
+    public void SetVerticalSemaphores() {
+        Debug.Log("SetVertical");
+        northSemaphoreCollider.enabled = true;
+        southSemaphoreCollider.enabled = true;
         northSemaphoreRenderer.material = closeSemaphoreMaterial;
         southSemaphoreRenderer.material = closeSemaphoreMaterial;
 
-        westSemaphoreCollider.enabled = !isEnable;
-        eastSemaphoreCollider.enabled = !isEnable;
+        westSemaphoreCollider.enabled = !true;
+        eastSemaphoreCollider.enabled = !true;
         westSemaphoreRenderer.material = openSemaphoreMaterial;
         eastSemaphoreRenderer.material = openSemaphoreMaterial;
 

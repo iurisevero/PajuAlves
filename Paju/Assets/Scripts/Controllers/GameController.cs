@@ -12,6 +12,7 @@ public class GameController : Singleton<GameController>
     public GameObject redCarPrefab;
     public UIController uiController;
     public bool gameOver { private set; get; }
+    public bool win { private set; get; }
     public int totalPoints {private set; get; }
 
     void Start()
@@ -27,6 +28,15 @@ public class GameController : Singleton<GameController>
         Debug.Log("GameController GameOver");
         gameOver = true;
         uiController.ShowLose();
+        Invoke("ReturnToMenu", 2f);
+    }
+
+    public void Win() {
+        Debug.Log("GameController Win");
+        win = true;
+        uiController.ShowWin();
+        levels[SceneManager.GetActiveScene().buildIndex - 1].completed = true;
+        Invoke("ReturnToMenu", 2f);
     }
 
     public void AddPoints(int pointsToAdd) {
@@ -34,12 +44,16 @@ public class GameController : Singleton<GameController>
         uiController.UpdatePoints(totalPoints.ToString());
 
         if(totalPoints == winPoints) {
-            uiController.ShowWin();
+            Win();
         }
     }
 
     public void GoToLevel(int index, int toWinPoints) {
         winPoints = toWinPoints;
         SceneManager.LoadScene(index);
+    }
+
+    public void ReturnToMenu() {
+        SceneManager.LoadScene(0);
     }
 }
