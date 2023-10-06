@@ -15,6 +15,7 @@ public class CarController : MonoBehaviour
     public float speed = 2.5f;
     public float raycastDistance = 1.0f;
     public int maxTimeStopped = 10;
+    public int pointsToAdd = 1;
     public bool warnHalfTime = false;
     public bool warnOneQuarter = false;
     public Image countDownImage;

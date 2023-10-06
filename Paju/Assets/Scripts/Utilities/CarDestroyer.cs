@@ -19,6 +19,7 @@ public class CarDestroyer : MonoBehaviour
 
     void OnCollisionEnter(Collision hit) {
         if(hit.gameObject.tag == Constants.carTag) {
+            GameController.Instance.AddPoints(hit.gameObject.GetComponent<CarController>().pointsToAdd);
             Enqueue(hit.gameObject);
         }
     } 
