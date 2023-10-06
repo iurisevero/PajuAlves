@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveDirection: 1
   move: 1
-  speed: 2.5
+  speed: 5
   raycastDistance: 2.5
   maxTimeStopped: 50
   warnHalfTime: 0
