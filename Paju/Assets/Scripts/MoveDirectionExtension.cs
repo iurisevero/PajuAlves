@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting;
 
 public static class MoveDirectionExtensions
 {
@@ -14,6 +15,13 @@ public static class MoveDirectionExtensions
                 return 90f;
             default:
                 return 180f;
+        }
+    }
+
+    public static bool InvertDirection(this MoveDirection moveDirection, MoveDirection compareDirection) {
+        switch (moveDirection)
+        {
+            
         }
     }
 }
