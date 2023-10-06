@@ -2434,7 +2434,7 @@ PrefabInstance:
     - target: {fileID: 1934625812898065203, guid: 85c4e2470f147194e9b615a0d6961c65,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1934625812898065213, guid: 85c4e2470f147194e9b615a0d6961c65,
         type: 3}
@@ -2504,6 +2504,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AutoSemaphore
+      objectReference: {fileID: 0}
+    - target: {fileID: 7130803629103351824, guid: 68ee830bd6287a94a8fd534dc5443b8b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7130803629103351838, guid: 68ee830bd6287a94a8fd534dc5443b8b,
         type: 3}

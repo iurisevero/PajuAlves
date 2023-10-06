@@ -38,8 +38,25 @@ public class AudioManager : Singleton<AudioManager>
             return;
         }
 
-        s.source.volume = s.volume * (1f + UnityEngine.Random.Range(-s.volumeVariance / 2f, s.volumeVariance / 2f));
-        s.source.pitch = s.pitch * (1f + UnityEngine.Random.Range(-s.pitchVariance / 2f, s.pitchVariance / 2f));
+        s.source.volume = s.volume;
+        s.source.pitch = s.pitch;
+
+        s.source.Play();
+    }
+
+    public void Play(string sound, float volume, float pitch)
+    {
+        // Sound s = Array.Find(sounds, item => item.name == sound);
+        Sound s = mapSounds[sound];
+
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found!");
+            return;
+        }
+
+        s.source.volume = volume;
+        s.source.pitch = pitch;
 
         s.source.Play();
     }
@@ -55,8 +72,8 @@ public class AudioManager : Singleton<AudioManager>
             return;
         }
 
-        s.source.volume = s.volume * (1f + UnityEngine.Random.Range(-s.volumeVariance / 2f, s.volumeVariance / 2f));
-        s.source.pitch = s.pitch * (1f + UnityEngine.Random.Range(-s.pitchVariance / 2f, s.pitchVariance / 2f));
+        s.source.volume = s.volume;
+        s.source.pitch = s.pitch;
 
         s.source.Pause();
     }
@@ -72,8 +89,8 @@ public class AudioManager : Singleton<AudioManager>
             return;
         }
 
-        s.source.volume = s.volume * (1f + UnityEngine.Random.Range(-s.volumeVariance / 2f, s.volumeVariance / 2f));
-        s.source.pitch = s.pitch * (1f + UnityEngine.Random.Range(-s.pitchVariance / 2f, s.pitchVariance / 2f));
+        s.source.volume = s.volume;
+        s.source.pitch = s.pitch;
 
         s.source.UnPause();
     }
@@ -88,15 +105,15 @@ public class AudioManager : Singleton<AudioManager>
             return;
         }
 
-        s.source.volume = s.volume * (1f + UnityEngine.Random.Range(-s.volumeVariance / 2f, s.volumeVariance / 2f));
-        s.source.pitch = s.pitch * (1f + UnityEngine.Random.Range(-s.pitchVariance / 2f, s.pitchVariance / 2f));
+        s.source.volume = s.volume;
+        s.source.pitch = s.pitch;
 
         s.source.Stop();
     }
 
-    public void PlayBreak()
+    public void PlayHornEffect(float volume, float pitch)
     {
-        int rand = UnityEngine.Random.Range(1, 5);
-        Play("Break" + rand.ToString());
+        int rand = UnityEngine.Random.Range(1, 16);
+        Play("hornEffect" + rand.ToString(), volume, pitch);
     }
 }

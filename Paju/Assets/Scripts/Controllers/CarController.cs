@@ -39,12 +39,18 @@ public class CarController : MonoBehaviour
         if((int) currentCountDown == maxTimeStopped/2 && !warnHalfTime) {
             warnHalfTime = true;
             countDownImage.color = Color.yellow;
+            AudioManager.Instance.PlayHornEffect(
+                0.5f, UnityEngine.Random.Range(0.5f, 2.0f)
+            );
             Debug.Log("HalfTime");
         }
 
         if((int) currentCountDown == maxTimeStopped/4 && !warnOneQuarter) {
             warnOneQuarter = true;
             countDownImage.color = Color.red;
+            AudioManager.Instance.PlayHornEffect(
+                0.75f, UnityEngine.Random.Range(0.5f, 2.0f)
+            );
             Debug.Log("OneQuarter");
         }
 

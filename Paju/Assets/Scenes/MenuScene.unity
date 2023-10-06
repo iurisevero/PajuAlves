@@ -650,6 +650,7 @@ GameObject:
   m_Component:
   - component: {fileID: 337336584}
   - component: {fileID: 337336583}
+  - component: {fileID: 337336585}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -701,6 +702,109 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &337336585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337336582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7771dee1df40cfc43822f6e193512dcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: hornEffect1
+    clip: {fileID: 8300000, guid: 007959247db664b40895789896194447, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: hornEffect2
+    clip: {fileID: 8300000, guid: 632eb419965b70f4b94bacf47b20183b, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: hornEffect3
+    clip: {fileID: 8300000, guid: 40d052c3348bb6a44b5c389b2b5f8852, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: hornEffect4
+    clip: {fileID: 8300000, guid: ae8aa16e55fbe0b46949a3678dc04050, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: hornEffect5
+    clip: {fileID: 8300000, guid: b25a128770374b943af1bee96cb34ddf, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: hornEffect6
+    clip: {fileID: 8300000, guid: 772f2a0cb7e28014e915975ce1992d4b, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: hornEffect7
+    clip: {fileID: 8300000, guid: 59664736372884e46853dceeea2da2b2, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: hornEffect8
+    clip: {fileID: 8300000, guid: a4c119f3e4c07a242ad081479ff92241, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: hornEffect9
+    clip: {fileID: 8300000, guid: eb66d1f785b2bba45b558d66086f16f6, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: hornEffect10
+    clip: {fileID: 8300000, guid: a3b5c811d9adb0c44948e8a6548a25c0, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: hornEffect11
+    clip: {fileID: 8300000, guid: f290e3170764b424a8f54ec4a2d910fe, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: hornEffect12
+    clip: {fileID: 8300000, guid: 074b2547ad14a56489c9339b3b567972, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: hornEffect13
+    clip: {fileID: 8300000, guid: 63757ddc697823a43a41a91f87247e69, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: hornEffect14
+    clip: {fileID: 8300000, guid: 8767ce50edd6e2b45a0ce77557d13a91, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: hornEffect15
+    clip: {fileID: 8300000, guid: 6f2ceeebbfd7ffd499c6bac9fc8d2928, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!1 &443111696
 GameObject:
   m_ObjectHideFlags: 0
@@ -852,7 +956,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 484905446}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 337336585}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlayHornEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &484905446
 MonoBehaviour:
   m_ObjectHideFlags: 0
