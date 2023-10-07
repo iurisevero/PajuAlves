@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AutoSemaphoreController : MonoBehaviour
 {
@@ -12,6 +15,9 @@ public class AutoSemaphoreController : MonoBehaviour
     public bool horizontalSemaphoreOn = true, horizontalCountDown = false, verticalCountDown = false;
     public float currentCountDownTime = Constants.maxCountDown;
     public float horizontalTime = 5.0f, verticalTime = 5.0f;
+    public GameObject northCountDownObj, westCountDownObj;
+    public Image northCountDownImage, westCountDownImage, currentCountDownImage;
+    public TextMeshProUGUI northCountText, westCountText, currentCountText;
 
     // Start is called before the first frame update
     void Start()
@@ -24,29 +30,45 @@ public class AutoSemaphoreController : MonoBehaviour
     {
         if(horizontalCountDown) {
             currentCountDownTime -= Time.deltaTime;
+            currentCountText.text = Mathf.CeilToInt(currentCountDownTime).ToString();
+            currentCountDownImage.fillAmount = (
+                100.0f - (currentCountDownTime * 100.0f / horizontalTime)
+            )/100.0f;
             Debug.Log($"Horizontal Counting down");
         }
 
         if(verticalCountDown) {
             currentCountDownTime -= Time.deltaTime;
+            currentCountText.text = Mathf.CeilToInt(currentCountDownTime).ToString();
+            currentCountDownImage.fillAmount = (
+                100.0f - (currentCountDownTime * 100.0f / verticalTime)
+            )/100.0f;
             Debug.Log($"Vertical Counting down");
         }
 
         if(horizontalSemaphoreOn && !horizontalCountDown) {
             horizontalCountDown = true;
             currentCountDownTime = horizontalTime;
+            currentCountDownImage = westCountDownImage;
+            currentCountText = westCountText;
+            currentCountDownImage.fillAmount = 0;
+            westCountDownObj.SetActive(true);
         }
 
         if(!horizontalSemaphoreOn && !verticalCountDown) {
             verticalCountDown = true;
             currentCountDownTime = verticalTime;
+            currentCountDownImage = northCountDownImage;
+            currentCountText = northCountText;
+            currentCountDownImage.fillAmount = 0;
+            northCountDownObj.SetActive(true);
         }
 
-        if(horizontalSemaphoreOn && horizontalCountDown && (int) currentCountDownTime == 0) {
+        if(horizontalSemaphoreOn && horizontalCountDown && currentCountDownTime <= 0) {
             SetVerticalSemaphores();
         }
 
-        if(!horizontalSemaphoreOn && verticalCountDown && (int) currentCountDownTime == 0) {
+        if(!horizontalSemaphoreOn && verticalCountDown && currentCountDownTime <= 0) {
             SetHorizontalSemaphores();
         }
     }
@@ -74,6 +96,7 @@ public class AutoSemaphoreController : MonoBehaviour
         horizontalSemaphoreOn = true;
         verticalCountDown = false;
         horizontalCountDown = false;
+        northCountDownObj.SetActive(false);
     }
 
     public void SetVerticalSemaphores() {
@@ -91,13 +114,6 @@ public class AutoSemaphoreController : MonoBehaviour
         horizontalSemaphoreOn = false;
         verticalCountDown = false;
         horizontalCountDown = false;
-    }
-
-    public void UpdateVerticalTime(string value) {
-        verticalTime = int.Parse(value);
-    }
-
-    public void UpdateHorizontalTime(string value) {
-        horizontalTime = int.Parse(value);
+        westCountDownObj.SetActive(false);
     }
 }

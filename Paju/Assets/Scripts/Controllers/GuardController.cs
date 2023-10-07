@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GuardController : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class GuardController : MonoBehaviour
     public BoxCollider westSemaphoreCollider, eastSemaphoreCollider;
     public MeshRenderer northSemaphoreRenderer, southSemaphoreRenderer;
     public MeshRenderer westSemaphoreRenderer, eastSemaphoreRenderer;
+    public Button northSemaphoreButton, southSemaphoreButton;
+    public Button westSemaphoreButton, eastSemaphoreButton;
     public Material openSemaphoreMaterial, closeSemaphoreMaterial;
     public GameObject guardPrefab;
 
@@ -31,8 +34,12 @@ public class GuardController : MonoBehaviour
         westSemaphoreRenderer.material = closeSemaphoreMaterial;
         eastSemaphoreRenderer.material = closeSemaphoreMaterial;
         southSemaphoreRenderer.material = closeSemaphoreMaterial;
+        westSemaphoreButton.interactable = true;
+        eastSemaphoreButton.interactable = true;
+        southSemaphoreButton.interactable = true;
 
-        northSemaphoreCollider.enabled = !true;
+        northSemaphoreCollider.enabled = false;
+        northSemaphoreButton.interactable = false;
         northSemaphoreRenderer.material = openSemaphoreMaterial;
         guardPrefab.transform.rotation = Quaternion.Euler(0, MoveDirection.North.ToFloat(), 0);
     }
@@ -45,36 +52,48 @@ public class GuardController : MonoBehaviour
         westSemaphoreRenderer.material = closeSemaphoreMaterial;
         northSemaphoreRenderer.material = closeSemaphoreMaterial;
         southSemaphoreRenderer.material = closeSemaphoreMaterial;
+        westSemaphoreButton.interactable = true;
+        northSemaphoreButton.interactable = true;
+        southSemaphoreButton.interactable = true;
 
-        eastSemaphoreCollider.enabled = !true;
+        eastSemaphoreCollider.enabled = false;
+        eastSemaphoreButton.interactable = false;
         eastSemaphoreRenderer.material = openSemaphoreMaterial;
         guardPrefab.transform.rotation = Quaternion.Euler(0, MoveDirection.East.ToFloat(), 0);
     }
 
     public void SetSouthSemaphore() {
         Debug.Log("SetSouth");
+        westSemaphoreCollider.enabled = true;
         northSemaphoreCollider.enabled = true;
         eastSemaphoreCollider.enabled = true;
-        westSemaphoreCollider.enabled = true;
+        westSemaphoreRenderer.material = closeSemaphoreMaterial;
         northSemaphoreRenderer.material = closeSemaphoreMaterial;
         eastSemaphoreRenderer.material = closeSemaphoreMaterial;
-        westSemaphoreRenderer.material = closeSemaphoreMaterial;
+        westSemaphoreButton.interactable = true;
+        northSemaphoreButton.interactable = true;
+        eastSemaphoreButton.interactable = true;
 
-        southSemaphoreCollider.enabled = !true;
+        southSemaphoreCollider.enabled = false;
+        southSemaphoreButton.interactable = false;
         southSemaphoreRenderer.material = openSemaphoreMaterial;
         guardPrefab.transform.rotation = Quaternion.Euler(0, MoveDirection.South.ToFloat(), 0);
     }
 
     public void SetWestSemaphore() {
         Debug.Log("SetWest");
-        northSemaphoreCollider.enabled = true;
         eastSemaphoreCollider.enabled = true;
+        northSemaphoreCollider.enabled = true;
         southSemaphoreCollider.enabled = true;
-        northSemaphoreRenderer.material = closeSemaphoreMaterial;
         eastSemaphoreRenderer.material = closeSemaphoreMaterial;
+        northSemaphoreRenderer.material = closeSemaphoreMaterial;
         southSemaphoreRenderer.material = closeSemaphoreMaterial;
+        eastSemaphoreButton.interactable = true;
+        northSemaphoreButton.interactable = true;
+        southSemaphoreButton.interactable = true;
 
-        westSemaphoreCollider.enabled = !true;
+        westSemaphoreCollider.enabled = false;
+        westSemaphoreButton.interactable = false;
         westSemaphoreRenderer.material = openSemaphoreMaterial;
         guardPrefab.transform.rotation = Quaternion.Euler(0, MoveDirection.West.ToFloat(), 0);
     }

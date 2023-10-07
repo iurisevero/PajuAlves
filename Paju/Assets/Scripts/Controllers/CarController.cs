@@ -17,14 +17,16 @@ public class CarController : MonoBehaviour
     public int pointsToAdd = 1;
     public bool warnHalfTime = false;
     public bool warnOneQuarter = false;
-    public Image countDownImage;
+    public bool onCountDownCoroutine = false;
+    public Image countDownBackground, countDownImage, countDownFace;
+    public Sprite happySprite, okSprite, angrySprite;
 
     // Start is called before the first frame update
     void Start()
     {
         _rigidbody = gameObject.GetComponent<Rigidbody>();
         closestValidHit = new RaycastHit();
-        countDownImage.enabled = false;
+        countDownBackground.gameObject.SetActive(false);
     }
 
     void Update() {
@@ -39,6 +41,7 @@ public class CarController : MonoBehaviour
         if((int) currentCountDown == maxTimeStopped/2 && !warnHalfTime) {
             warnHalfTime = true;
             countDownImage.color = Color.yellow;
+            countDownFace.sprite = okSprite;
             AudioManager.Instance.PlayHornEffect(
                 0.5f, UnityEngine.Random.Range(0.5f, 2.0f)
             );
@@ -48,13 +51,14 @@ public class CarController : MonoBehaviour
         if((int) currentCountDown == maxTimeStopped/4 && !warnOneQuarter) {
             warnOneQuarter = true;
             countDownImage.color = Color.red;
+            countDownFace.sprite = angrySprite;
             AudioManager.Instance.PlayHornEffect(
                 0.75f, UnityEngine.Random.Range(0.5f, 2.0f)
             );
             Debug.Log("OneQuarter");
         }
 
-        if((int) currentCountDown < 0 && !GameController.Instance.gameOver) {
+        if(currentCountDown <= 0 && !GameController.Instance.gameOver) {
             GameController.Instance.GameOver();
             Debug.Log("Game Over");
         }
@@ -94,13 +98,9 @@ public class CarController : MonoBehaviour
                 move = false;
             }
 
-            if(!countingDown && !move) {
-                countingDown = true;
-                countDownImage.fillAmount = 0;
-                countDownImage.color = Color.green;
-                countDownImage.enabled = true;
-                currentCountDown = maxTimeStopped;
-                Debug.Log("Starting count down");
+            if(!countingDown && !move && !onCountDownCoroutine) {
+                onCountDownCoroutine = true;
+                StartCoroutine(StartCountingDownCoroutine());
             }
         } else {
             move = true;
@@ -110,7 +110,8 @@ public class CarController : MonoBehaviour
                 currentCountDown = Constants.maxCountDown;
                 warnHalfTime = false;
                 warnOneQuarter = false;
-                countDownImage.enabled = false;
+                onCountDownCoroutine = false;
+                countDownBackground.gameObject.SetActive(false);
                 Debug.Log("Stopping count down");
             }
         }
@@ -141,5 +142,16 @@ public class CarController : MonoBehaviour
 
         _rigidbody.velocity = transform.right * speed;
         transform.rotation = movementDirection;
+    }
+
+    IEnumerator StartCountingDownCoroutine() {
+        yield return new WaitForSeconds(1f);
+        countingDown = true;
+        countDownImage.fillAmount = 0;
+        countDownImage.color = Color.green;
+        countDownFace.sprite = happySprite;
+        countDownBackground.gameObject.SetActive(true);
+        currentCountDown = maxTimeStopped;
+        Debug.Log("Starting count down");
     }
 }
