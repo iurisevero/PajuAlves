@@ -39,7 +39,7 @@ public class GameController : Singleton<GameController>
         gameOver = true;
         uiController.ShowLose();
         AudioManager.Instance.Play("Lose");
-        Invoke("ReturnToMenu", 2f);
+        Invoke("ReturnToMenu", 5f);
     }
 
     public void Win() {
@@ -48,7 +48,7 @@ public class GameController : Singleton<GameController>
         uiController.ShowWin();
         // levels[SceneManager.GetActiveScene().buildIndex - 1].completed = true;
         AudioManager.Instance.Play("Win");
-        Invoke("ReturnToMenu", 2f);
+        Invoke("ReturnToMenu", 5f);
     }
 
     public void AddPoints(int pointsToAdd) {
