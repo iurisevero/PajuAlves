@@ -43,7 +43,7 @@ public class CarController : MonoBehaviour
             countDownImage.color = Color.yellow;
             countDownFace.sprite = okSprite;
             AudioManager.Instance.PlayHornEffect(
-                0.5f, UnityEngine.Random.Range(0.5f, 2.0f)
+                0.3f, UnityEngine.Random.Range(0.5f, 2.0f)
             );
             Debug.Log("HalfTime");
         }
@@ -53,7 +53,7 @@ public class CarController : MonoBehaviour
             countDownImage.color = Color.red;
             countDownFace.sprite = angrySprite;
             AudioManager.Instance.PlayHornEffect(
-                0.75f, UnityEngine.Random.Range(0.5f, 2.0f)
+                0.5f, UnityEngine.Random.Range(0.5f, 2.0f)
             );
             Debug.Log("OneQuarter");
         }

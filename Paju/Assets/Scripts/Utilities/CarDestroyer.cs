@@ -21,6 +21,9 @@ public class CarDestroyer : MonoBehaviour
         if(hit.gameObject.tag == Constants.carTag) {
             GameController.Instance.AddPoints(hit.gameObject.GetComponent<CarController>().pointsToAdd);
             Enqueue(hit.gameObject);
+            if(hit.gameObject.name.Contains("Ambulance")) {
+                AudioManager.Instance.Stop("Ambulance");
+            }
         }
     } 
 

@@ -20,6 +20,7 @@ public class GameController : Singleton<GameController>
 
     void Start()
     {
+        winPoints = 5000;
         gameOver = false;
         GameObjectPoolController.AddEntry(Constants.GetCarPoolKey(CarPoolKey.YellowCar), yellowCarPrefab, 5, 10);
         GameObjectPoolController.AddEntry(Constants.GetCarPoolKey(CarPoolKey.OrangeCar), orangeCarPrefab, 5, 10);
@@ -28,6 +29,9 @@ public class GameController : Singleton<GameController>
         GameObjectPoolController.AddEntry(Constants.GetCarPoolKey(CarPoolKey.Ambulance), ambulancePrefab, 5, 10);
         totalPoints = 0;
         acumulatedPoints = 0;
+        AudioManager.Instance.Play("Menu");
+        AudioManager.Instance.Stop("InGame1");
+        AudioManager.Instance.Stop("InGame2");
     }
 
     public void GameOver() {
@@ -41,7 +45,7 @@ public class GameController : Singleton<GameController>
         Debug.Log("GameController Win");
         win = true;
         uiController.ShowWin();
-        levels[SceneManager.GetActiveScene().buildIndex - 1].completed = true;
+        // levels[SceneManager.GetActiveScene().buildIndex - 1].completed = true;
         Invoke("ReturnToMenu", 2f);
     }
 
@@ -60,11 +64,16 @@ public class GameController : Singleton<GameController>
         totalPoints = 0;
         acumulatedPoints = 0;
         SceneManager.LoadScene(index);
+        AudioManager.Instance.Stop("Menu");
+        AudioManager.Instance.Play("InGame" + UnityEngine.Random.Range(1, 3).ToString());
     }
 
     public void ReturnToMenu() {
         SceneManager.LoadScene(0);
         gameOver = false;
         win = false;
+        AudioManager.Instance.Play("Menu");
+        AudioManager.Instance.Stop("InGame1");
+        AudioManager.Instance.Stop("InGame2");
     }
 }

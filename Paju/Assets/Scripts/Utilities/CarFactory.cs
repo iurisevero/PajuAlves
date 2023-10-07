@@ -9,9 +9,11 @@ public class CarFactory : MonoBehaviour
     private List<Poolable> instantiatedCars;
     public MoveDirection toMoveDirection;
     public ToSpawnCar[] toSpawnCars;
+    public GameObject ambulanceAlertObj;
 
     void Start()
     {
+        ambulanceAlertObj.SetActive(false);
         instantiatedCars = new List<Poolable>();
         StartCoroutine(SpawnCars());
     }
@@ -50,7 +52,20 @@ public class CarFactory : MonoBehaviour
             Debug.Log($"{this.gameObject} waiting {toSpawnCars[i].time} to spawn {toSpawnCars[i].key}");
             yield return new WaitForSeconds(toSpawnCars[i].time);
             GameObject car = Dequeue(Constants.GetCarPoolKey(toSpawnCars[i].key));
+            if(toSpawnCars[i].key == CarPoolKey.Ambulance) {
+                AudioManager.Instance.Play("Ambulance");
+                StartCoroutine(AlertAmbulance());
+                yield return new WaitForSeconds(1f);
+            } else {
+                ambulanceAlertObj.SetActive(false);
+            }
             ConfigureCar(car);
         }
+    }
+
+    IEnumerator AlertAmbulance() {
+        ambulanceAlertObj.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        ambulanceAlertObj.SetActive(false);
     }
 }
