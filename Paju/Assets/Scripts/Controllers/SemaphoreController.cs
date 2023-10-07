@@ -24,6 +24,7 @@ public class SemaphoreController : MonoBehaviour
     }
 
     public void SwitchSemaphore() {
+        AudioManager.Instance.Play("Click");
         if(horizontalSemaphoreOn) {
             SetVerticalSemaphores();
         } else {

@@ -28,6 +28,7 @@ public class GuardController : MonoBehaviour
 
     public void SetNorthSemaphore() {
         Debug.Log("SetNorth");
+        AudioManager.Instance.Play("Click");
         westSemaphoreCollider.enabled = true;
         eastSemaphoreCollider.enabled = true;
         southSemaphoreCollider.enabled = true;
@@ -46,6 +47,7 @@ public class GuardController : MonoBehaviour
 
     public void SetEastSemaphore() {
         Debug.Log("SetEast");
+        AudioManager.Instance.Play("Click");
         westSemaphoreCollider.enabled = true;
         northSemaphoreCollider.enabled = true;
         southSemaphoreCollider.enabled = true;
@@ -64,6 +66,7 @@ public class GuardController : MonoBehaviour
 
     public void SetSouthSemaphore() {
         Debug.Log("SetSouth");
+        AudioManager.Instance.Play("Click");
         westSemaphoreCollider.enabled = true;
         northSemaphoreCollider.enabled = true;
         eastSemaphoreCollider.enabled = true;
@@ -82,6 +85,7 @@ public class GuardController : MonoBehaviour
 
     public void SetWestSemaphore() {
         Debug.Log("SetWest");
+        AudioManager.Instance.Play("Click");
         eastSemaphoreCollider.enabled = true;
         northSemaphoreCollider.enabled = true;
         southSemaphoreCollider.enabled = true;

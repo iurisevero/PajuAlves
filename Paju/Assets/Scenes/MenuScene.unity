@@ -635,8 +635,32 @@ MonoBehaviour:
     loop: 1
     source: {fileID: 0}
   - name: Ambulance
-    clip: {fileID: 8300000, guid: b655cd5d99686074686e1a07e4bc9608, type: 3}
+    clip: {fileID: 8300000, guid: 8ddc3120577c349439f1cdcddb5cfb87, type: 3}
     volume: 0.7
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Win
+    clip: {fileID: 8300000, guid: 18e105fc058367c40809adf60c5477a1, type: 3}
+    volume: 0.7
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Lose
+    clip: {fileID: 8300000, guid: a85348f0e8901f1478325793e9f73e9f, type: 3}
+    volume: 0.7
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Play
+    clip: {fileID: 8300000, guid: 7a7478f180e9a9343a0d09071ffb2842, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Click
+    clip: {fileID: 8300000, guid: 957361c725b605a4d8f3661b29b372c0, type: 3}
+    volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -913,7 +937,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 484905446}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 337336585}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Play
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &484905446
 MonoBehaviour:
   m_ObjectHideFlags: 0

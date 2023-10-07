@@ -38,6 +38,7 @@ public class GameController : Singleton<GameController>
         Debug.Log("GameController GameOver");
         gameOver = true;
         uiController.ShowLose();
+        AudioManager.Instance.Play("Lose");
         Invoke("ReturnToMenu", 2f);
     }
 
@@ -46,6 +47,7 @@ public class GameController : Singleton<GameController>
         win = true;
         uiController.ShowWin();
         // levels[SceneManager.GetActiveScene().buildIndex - 1].completed = true;
+        AudioManager.Instance.Play("Win");
         Invoke("ReturnToMenu", 2f);
     }
 
@@ -75,5 +77,6 @@ public class GameController : Singleton<GameController>
         AudioManager.Instance.Play("Menu");
         AudioManager.Instance.Stop("InGame1");
         AudioManager.Instance.Stop("InGame2");
+        AudioManager.Instance.Stop("Ambulance");
     }
 }

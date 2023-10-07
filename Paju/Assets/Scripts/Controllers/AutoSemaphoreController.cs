@@ -79,6 +79,7 @@ public class AutoSemaphoreController : MonoBehaviour
         } else {
             SetHorizontalSemaphores();
         }
+        AudioManager.Instance.Play("Click");
     }
 
     public void SetHorizontalSemaphores() {

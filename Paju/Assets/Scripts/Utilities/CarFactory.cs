@@ -20,7 +20,10 @@ public class CarFactory : MonoBehaviour
 
     void Update()
     {
-        if(GameController.Instance.gameOver && instantiatedCars.Count > 0)
+        if(
+            (GameController.Instance.gameOver || GameController.Instance.win) &&
+             instantiatedCars.Count > 0
+        )
             EnqueueAll();
     }
 
