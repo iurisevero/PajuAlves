@@ -7,20 +7,24 @@ public class GameController : Singleton<GameController>
 {
     private int winPoints;
     public Level[] levels;
-    public GameObject blueCarPrefab;
+    public GameObject yellowCarPrefab;
     public GameObject orangeCarPrefab;
-    public GameObject redCarPrefab;
+    public GameObject blueTruckPrefab;
+    public GameObject pinkTruckPrefab;
+    public GameObject ambulancePrefab;
     public UIController uiController;
     public bool gameOver { private set; get; }
     public bool win { private set; get; }
-    public int totalPoints {private set; get; }
+    public int totalPoints;
 
     void Start()
     {
         gameOver = false;
-        GameObjectPoolController.AddEntry(Constants.GetCarPoolKey(CarPoolKey.BlueCar), blueCarPrefab, 5, 10);
+        GameObjectPoolController.AddEntry(Constants.GetCarPoolKey(CarPoolKey.YellowCar), yellowCarPrefab, 5, 10);
         GameObjectPoolController.AddEntry(Constants.GetCarPoolKey(CarPoolKey.OrangeCar), orangeCarPrefab, 5, 10);
-        GameObjectPoolController.AddEntry(Constants.GetCarPoolKey(CarPoolKey.RedCar), redCarPrefab, 5, 10);
+        GameObjectPoolController.AddEntry(Constants.GetCarPoolKey(CarPoolKey.BlueTruck), blueTruckPrefab, 5, 10);
+        GameObjectPoolController.AddEntry(Constants.GetCarPoolKey(CarPoolKey.PinkTruck), pinkTruckPrefab, 5, 10);
+        GameObjectPoolController.AddEntry(Constants.GetCarPoolKey(CarPoolKey.Ambulance), ambulancePrefab, 5, 10);
         totalPoints = 0;
     }
 

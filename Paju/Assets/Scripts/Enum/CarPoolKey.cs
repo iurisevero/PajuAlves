@@ -1,6 +1,8 @@
 public enum CarPoolKey 
 {
-    RedCar,
-    BlueCar,
-    OrangeCar
+    YellowCar,
+    OrangeCar,
+    BlueTruck,
+    PinkTruck,
+    Ambulance
 }

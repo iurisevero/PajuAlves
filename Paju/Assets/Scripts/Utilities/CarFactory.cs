@@ -7,7 +7,6 @@ using UnityEngine;
 public class CarFactory : MonoBehaviour
 {
     private List<Poolable> instantiatedCars;
-    public GameObject carPrefab;
     public MoveDirection toMoveDirection;
     public ToSpawnCar[] toSpawnCars;
 

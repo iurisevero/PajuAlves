@@ -748,7 +748,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levels:
   - index: 1
-    winPoints: 12
+    winPoints: 250
     completed: 0
   - index: 1
     winPoints: 12
@@ -756,13 +756,18 @@ MonoBehaviour:
   - index: 1
     winPoints: 12
     completed: 0
-  blueCarPrefab: {fileID: 869715267229460092, guid: 18149e89541d72b4cb90636133f9c71d,
+  yellowCarPrefab: {fileID: 7074329407299774043, guid: 6aa2a36fa8b4f4d4595dfffe93c1fa35,
     type: 3}
-  orangeCarPrefab: {fileID: 869715267229460092, guid: 18149e89541d72b4cb90636133f9c71d,
+  orangeCarPrefab: {fileID: 3754973301927373700, guid: 45cc02936072a57418d21388b1934406,
     type: 3}
-  redCarPrefab: {fileID: 869715267229460092, guid: 18149e89541d72b4cb90636133f9c71d,
+  blueTruckPrefab: {fileID: 3328620508796796447, guid: bd05149a850b3a04b9e584e80bb08db6,
+    type: 3}
+  pinkTruckPrefab: {fileID: 7966463561306524691, guid: fd5ad7654df41f146ad62424f1f4d5af,
+    type: 3}
+  ambulancePrefab: {fileID: 3380168659735250868, guid: ca0a08786866ebc43900696ac4115e07,
     type: 3}
   uiController: {fileID: 0}
+  totalPoints: 0
 --- !u!4 &337336584
 Transform:
   m_ObjectHideFlags: 0
