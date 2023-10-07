@@ -227,7 +227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveDirection: 1
   move: 1
-  speed: 5
+  speed: 6
   raycastDistance: 2.5
   maxTimeStopped: 6
   pointsToAdd: 6

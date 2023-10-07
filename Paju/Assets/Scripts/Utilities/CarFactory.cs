@@ -47,6 +47,7 @@ public class CarFactory : MonoBehaviour
 
     IEnumerator SpawnCars() {
         for(int i=0; i < toSpawnCars.Length; ++i) {
+            Debug.Log($"{this.gameObject} waiting {toSpawnCars[i].time} to spawn {toSpawnCars[i].key}");
             yield return new WaitForSeconds(toSpawnCars[i].time);
             GameObject car = Dequeue(Constants.GetCarPoolKey(toSpawnCars[i].key));
             ConfigureCar(car);

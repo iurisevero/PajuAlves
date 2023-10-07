@@ -16,6 +16,7 @@ public class GameController : Singleton<GameController>
     public bool gameOver { private set; get; }
     public bool win { private set; get; }
     public int totalPoints;
+    public int acumulatedPoints;
 
     void Start()
     {
@@ -26,6 +27,7 @@ public class GameController : Singleton<GameController>
         GameObjectPoolController.AddEntry(Constants.GetCarPoolKey(CarPoolKey.PinkTruck), pinkTruckPrefab, 5, 10);
         GameObjectPoolController.AddEntry(Constants.GetCarPoolKey(CarPoolKey.Ambulance), ambulancePrefab, 5, 10);
         totalPoints = 0;
+        acumulatedPoints = 0;
     }
 
     public void GameOver() {
@@ -45,9 +47,10 @@ public class GameController : Singleton<GameController>
 
     public void AddPoints(int pointsToAdd) {
         totalPoints += pointsToAdd;
+        acumulatedPoints += pointsToAdd;
         uiController.UpdatePoints(totalPoints.ToString());
 
-        if(totalPoints == winPoints) {
+        if(acumulatedPoints >= winPoints) {
             Win();
         }
     }
@@ -55,6 +58,7 @@ public class GameController : Singleton<GameController>
     public void GoToLevel(int index, int toWinPoints) {
         winPoints = toWinPoints;
         totalPoints = 0;
+        acumulatedPoints = 0;
         SceneManager.LoadScene(index);
     }
 

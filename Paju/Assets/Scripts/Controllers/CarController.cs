@@ -123,24 +123,30 @@ public class CarController : MonoBehaviour
 
     void Move() {
         Quaternion movementDirection;
+        Vector3 movement;
 
         switch (moveDirection)
         {
             case MoveDirection.North:
                 movementDirection = Quaternion.Euler(0, MoveDirection.North.ToFloat(), 0);
+                movement = Vector3.forward;
                 break;
             case MoveDirection.East:
                 movementDirection = Quaternion.Euler(0, MoveDirection.East.ToFloat(), 0);
+                movement = Vector3.right;
                 break;
             case MoveDirection.South:
                 movementDirection = Quaternion.Euler(0, MoveDirection.South.ToFloat(), 0);
+                movement = Vector3.back;
                 break;
             default:
                 movementDirection = Quaternion.Euler(0, MoveDirection.West.ToFloat(), 0);
+                movement = Vector3.left;
                 break;
         }
 
-        _rigidbody.velocity = transform.right * speed;
+        Debug.Log($"{this.gameObject}: {transform.right}");
+        _rigidbody.velocity = movement * speed;
         transform.rotation = movementDirection;
     }
 

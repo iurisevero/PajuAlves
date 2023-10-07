@@ -748,7 +748,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levels:
   - index: 1
-    winPoints: 250
+    winPoints: 260
     completed: 0
   - index: 1
     winPoints: 12
